@@ -1,0 +1,142 @@
+.banner {
+  background: url("foto/gambar dalam toko2.jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+.hero{
+  background: url("foto/gambar\ model\ RJR.jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7) !important; /* Transparansi gelap */
+  transition: background-color 0.3s ease;
+}
+
+.navbar-brand,
+.nav-link {
+  color: white !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover,
+.nav-link:hover {
+  color: #afadad !important; /* Warna hover */
+}
+
+.navbar.fixed-top {
+  backdrop-filter: blur(5px); /* Efek blur untuk transparansi */
+}
+
+
+.hero .tittle {
+  display: flex;
+  flex-direction: column;
+
+  gap: 5px;
+
+}
+.hero .tittle h1 span {
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+.lingkaran {
+  display: inline-block;
+  border-radius: 50%;
+  width: 150px;
+  margin: auto;
+  height: 150px;
+  color: #fff;
+  background-color: #dc3545;
+}
+
+.lingkaran i {
+  position: relative;
+  top: 30px;
+}
+
+.crop-img {
+  object-fit: cover;
+}
+
+.tim img {
+  width: 250px;
+  border: 10px solid #cccccc;
+}
+
+a.social {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #333;
+  line-height: 40px;
+}
+
+.client img {
+  height: auto;
+  max-height: 50px;
+}
+
+.kontak {
+  background: url("https://wallpaperaccess.com/full/1867010.jpg") no-repeat
+    center center;
+  background-size: cover;
+  padding-bottom: 20%;
+  padding-top: 20%;
+  color: #fff;
+}
+
+/* Row Configuration */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem; /* Jarak antar elemen kolom */
+  justify-content: center; /* Mengatur elemen agar rata tengah */
+}
+
+/* Column Configuration */
+.col-md-4 {
+  flex: 0 0 calc(33.333% - 1rem); /* 3 kolom dalam satu baris */
+  margin-bottom: 1.5rem;
+  max-width: calc(33.333% - 1rem); /* Maksimal lebar kolom */
+}
+
+/* Card Styling */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styling */
+.card-img-top {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+
