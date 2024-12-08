@@ -42,29 +42,24 @@
         <div class="collapse navbar-collapse text-right" id="navbarText">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" href="home.html">Home</a>
+              <a class="nav-link" href="home.php">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="produk.html">Produk</a>
+              <a class="nav-link" href="produk.php">Produk</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tentang.html">Tentang</a>
+              <a class="nav-link" href="tentang.php">Tentang</a>
             </li>          
             <li class="nav-item">
-              <a class="nav-link" href="kontak.html">Kontak Kami</a>
+              <a class="nav-link" href="login.php">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!-- banner -->
-    <section class="hero">
+    <section class="banner-tentang">
       <div class="tittle container">
-        <h1 class="text-light">SELAMAT DATANG di <br> <span>RJR CLOTHING</span></h1>
-      <h2 class="text-light fs-6">BRAND NEW WITH THE BEST QUALITY FOR YOUR FASION</h2>
-      <a href="product.html">
-      <button class="btn btn-danger" type="submit">BELI SEKARANG</button>
-    </a>
       </div>
     </section>
     <!-- <div class="container-fluid banner">
@@ -234,164 +229,80 @@
       </div>
     </div> -->
     <!-- tentang -->
-    <div class="container-fluid pt-5 pb-5">
+    <div class="container-fluid pt-0 pb-5">
       <div class="container">
-        <h2 class="display-3 text-center" id="tentang">Tentang</h2>
+        <h2 class="display-3 text-center" id="tentang">Tentang Kami</h2>
         <p class="text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, ex!
+          jika anda bingung komunikasikan dengan admin.
         </p>
-        <div class="clearfix pt-5">
-          <img
-            src="https://img.freepik.com/free-vector/about-us-website-banner-concept-with-thin-line-flat-design_56103-96.jpg?size=626&ext=jpg"
-            class="col-md-6 float-md-end mb-3 crop-img"
-            width="300"
-            height="300"
-          />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            veritatis at voluptate commodi officiis sapiente.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            veritatis at voluptate commodi officiis sapiente.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            veritatis at voluptate commodi officiis sapiente.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Dignissimos laboriosam excepturi exercitationem qui expedita, ex
-            temporibus natus necessitatibus accusamus voluptatibus.
-          </p>
-        </div>
+
+       
+            <div class="container">
+              <div class="row pt-4 gx-4 gy-4">
+                <!-- Card 1 -->
+                <div class="col-md-4">
+                  <div class="card crop-img">
+                    <img src="foto/poster2.jpg" class="card-img-top" alt="poster" />
+                    <div class="card-body">
+                    </div>
+                  </div>
+                </div>
+                <!-- Card 2 -->
+
+                <div class="col-md-4">
+                  <div class="card crop-img">
+                    <img src="foto/poster8.jpg" class="card-img-top" alt="Poster" />
+                    <div class="card-body">
+                    </div>
+                  </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                  <div class="card crop-img">
+                    <img src="foto/poster4.jpg" class="card-img-top" alt="Poster" />
+                    <div class="card-body">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="row pt-4 gx-4 gy-4">
+                <!-- Card 4 -->
+                <div class="col-md-4">
+                  <div class="card crop-img">
+                    <img src="foto/poster5.jpg" class="card-img-top" alt="Poster" />
+                    <div class="card-body">
+                    </div>
+                  </div>
+                </div>
+                <!-- Card 5 -->
+                <div class="col-md-4">
+                  <div class="card crop-img">
+                    <img src="foto/poster6.jpg" class="card-img-top" alt="Poster" />
+                    <div class="card-body">
+                    </div>
+                  </div>
+                </div>
+                
+                  <!-- Card 6-->
+                <div class="col-md-4">
+                  <div class="card crop-img">
+                    <img src="foto/poster7.jpg" class="card-img-top" alt="Sepatu Ventela" />
+                    <div class="card-body">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
       </div>
     </div>
-    <!-- tim -->
-    <div class="container-fluid pt-5 pb-5 bg-light">
-      <div class="container text-center">
-        <h2 class="display-3" id="staff">Tim Kami</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et deleniti
-          quas at magni, iusto voluptates neque corrupti dolorum! Repellat,
-          quod.
-        </p>
-        <div class="row pt-4 gx-4 gy-4">
-          <div class="col-md-4 text-center tim">
-            <img
-              src="https://s3.amazonaws.com/cms-assets.tutsplus.com/uploads/users/810/profiles/19338/profileImage/profile-square-extra-small.png"
-              class="rounded-circle mb-3"
-            />
-            <h4>John Doe</h4>
-            <p>Web Designer</p>
-            <p>
-              <a href="" class="social"><i class="fab fa-twitter"></i></a>
-              <a href="" class="social"><i class="fab fa-facebook-f"></i></a>
-              <a href="" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </p>
-          </div>
-          <div class="col-md-4 text-center tim">
-            <img
-              src="http://gokubi.com/wp-content/uploads/2013/10/Steve-Andersen-Headshot-square1.jpeg"
-              class="rounded-circle mb-3"
-            />
-            <h4>Michael Dell</h4>
-            <p>Data Scientist</p>
-            <p>
-              <a href="" class="social"><i class="fab fa-twitter"></i></a>
-              <a href="" class="social"><i class="fab fa-facebook-f"></i></a>
-              <a href="" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </p>
-          </div>
-          <div class="col-md-4 text-center tim">
-            <img
-              src="https://www.kingrosales.com/wp-content/uploads/2018/05/king-rosales-profile-photo-square.jpg"
-              class="rounded-circle mb-3"
-            />
-            <h4>Paul</h4>
-            <p>Network Engineer</p>
-            <p>
-              <a href="" class="social"><i class="fab fa-twitter"></i></a>
-              <a href="" class="social"><i class="fab fa-facebook-f"></i></a>
-              <a href="" class="social"><i class="fab fa-linkedin-in"></i></a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Client -->
-    <div class="container-fluid client pt-5 pb-5">
-      <div class="container text-center">
-        <div class="row pt-4 gx-4 gy-4">
-          <div class="col">
-            <img
-              src="https://cdn.iconscout.com/icon/free/png-256/microsoft-28-761688.png"
-            />
-          </div>
-          <div class="col">
-            <img
-              src="https://cdn3.iconfinder.com/data/icons/glypho-social-and-other-logos/64/logo-facebook-512.png"
-            />
-          </div>
-          <div class="col">
-            <img src="https://image.flaticon.com/icons/png/512/61/61109.png" />
-          </div>
-          <div class="col">
-            <img
-              src="https://i.pinimg.com/originals/20/1d/17/201d17590b3a7bc8939ca37e577bbbd8.png"
-            />
-          </div>
-          <div class="col">
-            <img
-              src="https://www.ictmagazine.nl/wp-content/uploads/2020/10/ibm-720x340-1.png"
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- kontak -->
-    <div class="container-fluid pt-5 pb-5 kontak">
-      <div class="container">
-        <h2 class="display-3 text-center" id="kontak">Kontak Kami</h2>
-        <p class="text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque, porro.
-        </p>
-        <div class="row pb-3">
-          <div class="col-md-6">
-            <input
-              class="form-control form-control-lg mb-3"
-              type="text"
-              placeholder="Nama"
-            />
-            <input
-              class="form-control form-control-lg mb-3"
-              type="text"
-              placeholder="Email"
-            />
-            <input
-              class="form-control form-control-lg"
-              type="text"
-              placeholder="No. Phone"
-            />
-          </div>
-          <div class="col-md-6">
-            <textarea class="form-control form-control-lg" rows="5"></textarea>
-          </div>
-        </div>
-        <div class="col-md-3 mx-auto text-center">
-          <button type="button" class="btn btn-danger btn-lg">
-            Kirim Pesan
-          </button>
-        </div>
-      </div>
-    </div>
-    <div class="container text-center pt-5 pb-5">
-      All Rights Reserved &copy; 2024
-    </div>
-    <script
+            <?php include 'footer.php'; ?>
+
+     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
       crossorigin="anonymous"
     ></script>
   </body>
-</html>
+</html>    
+          

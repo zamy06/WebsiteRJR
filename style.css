@@ -1,4 +1,4 @@
-.banner {
+.banner-produk {
   background: url("foto/gambar dalam toko2.jpg")
     no-repeat center center;
   background-size: cover;
@@ -10,7 +10,19 @@
   
 }
 
-.hero{
+.banner-home{
+  background: url("foto/gambar\ depan\ toko\ .jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+.banner-tentang{
   background: url("foto/gambar\ model\ RJR.jpg")
     no-repeat center center;
   background-size: cover;
@@ -21,6 +33,81 @@
   font-weight: bolder;
   
 }
+
+.banner-topi{
+  background: url("foto/gambar\ dalam\ toko5.jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+.banner-shirt {
+  background: url("foto/gambar\ dalam\ toko6.jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+.banner-hoodie {
+  background: url("foto/gambar\ dalam\ toko7.jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+.banner-sepatu {
+  background: url("foto/gambar\ dalam\ toko9.jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+.banner-backbag {
+  background: url("foto/gambar\ dalam\ toko8.jpg.")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+
+.banner-Crewneck {
+  background: url("foto/gambar\ dalam\ toko1\ RJR.jpg")
+    no-repeat center center;
+  background-size: cover;
+  padding-top: 20%;
+  padding-bottom: 20%;
+  color: #fff;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  
+}
+
+
 
 .navbar {
   background-color: rgba(0, 0, 0, 0.7) !important; /* Transparansi gelap */
@@ -111,6 +198,7 @@ a.social {
   justify-content: center; /* Mengatur elemen agar rata tengah */
 }
 
+
 /* Column Configuration */
 .col-md-4 {
   flex: 0 0 calc(33.333% - 1rem); /* 3 kolom dalam satu baris */
@@ -140,3 +228,27 @@ a.social {
 }
 
 
+.col home{
+  flex: 1 1 calc(50% - 1.5rem); /* Setiap elemen mengambil 50% dari lebar dengan memperhitungkan gap */
+  max-width: calc(50% - 1.5rem); /* Maksimal lebar elemen tetap 50% */
+  box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
+}
+
+.left-content, .right-content {
+  padding: 35px;
+  background-color: #f9f9f9; /* Contoh latar belakang */
+  border: 1px solid #ddd; /* Contoh border */
+  border-radius: 8px; /* Membuat sudut elemen lebih halus */
+}
+
+.right-content iframe {
+  width: 100%; /* Iframe menyesuaikan ukuran kolom */
+  height: 450px; /* Tinggi iframe */
+  border: none;
+}
+
+.col-tentang{
+  flex: 1 1 calc(50% - 1.5rem); /* Setiap elemen mengambil 50% dari lebar dengan memperhitungkan gap */
+  max-width: calc(50% - 1.5rem); /* Maksimal lebar elemen tetap 50% */
+  box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
+}
