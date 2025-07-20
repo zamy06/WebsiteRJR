@@ -1,3 +1,6 @@
+<?php 
+include 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,42 +24,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- navigasi -->
-    <nav
-      class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg fixed-top"
-    >
-      <div class="container">
-        <img src="foto/logo_RJR-.png" width="30" height="30" alt="logo">
-        <a class="navbar-brand fw-bold" href="#">RJR CLOTHING</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarText"
-          aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse text-right" id="navbarText">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link" href="home.php">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="produk.php">Produk</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="tentang.php">Tentang</a>
-            </li>          
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Login</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <?php include 'navbar.php'; ?>
+
     <!-- banner -->
     <section class="banner-produk">
       <div class="tittle container">
@@ -71,114 +40,29 @@
         </p>
 
         <!-- card 1 -->
-         <div class="row">
-          <div class="col-md-4">
-            <div class="card crop-img shadow-sm">
-              <img
-                src="foto/topi bloods.jpeg"
-                class="card-img-top custom-img"
-                alt="Topi Bloods"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Topi Bloods</h5>
-                <p class="card-text">
-                  Topi dengan desain modern dan nyaman dipakai. Cocok untuk kegiatan santai maupun formal.
-                </p>
-                <a href="Topi.php" class="btn btn-primary">Lihat Selengkapnya</a>
-              </div>
-            </div>
-          </div>
-        
-          <!-- card 2 -->
-          <div class="col-md-4">
-            <div class="card crop-img shadow-sm">
-              <img
-                src="foto/kaos.jpg"
-                class="card-img-top custom-img" 
-                alt="T-shirt Bloods"
-              />
-              <div class="card-body">
-                <h5 class="card-title">T-shirt Bloods</h5>
-                <p class="card-text">
-                  T-shirt Bloods adalah pakaian kasual dengan sentuhan gaya streetwear yang ikonik. 
-                </p>
-                <a href="T-shirt.php" class="btn btn-primary">Lihat Selengkapnya</a>
-              </div>
-            </div>
-          </div>
-
-        <!-- card 3 -->
-          <div class="col-md-4">
-            <div class="card crop-img shadow-sm">
-              <img
-                src="foto/crewneck bloods.jpg"
-                class="card-img-top custom-img"
-                alt="Crewneck Bloods"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Crewneck Bloods</h5>
-                <p class="card-text">
-                  Crewneck dengan desain simple namun stylish. Cocok untuk berbagai suasana,formal atau santai
-                </p>
-                <a href="Crewneck.php" class="btn btn-primary">Lihat Selengkapnya</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- card 4 -->
-          <div class="col-md-4">
-            <div class="card crop-img shadow-sm">
-              <img
-                src="foto/sweter bloods.jpg"
-                class="card-img-top custom-img"
-                alt="Hoodie Bloods"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Hoodie Bloods</h5>
-                <p class="card-text">
-                  Hoodie adalah pakaian hangat yang dirancang untuk memberikan kenyamanan. 
-                </p>
-                <a href="Hoodie.php" class="btn btn-primary">Lihat Selengkapnya</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- card 5 -->
-          <div class="col-md-4">
-            <div class="card crop-img shadow-sm">
-              <img
-                src="foto/tas bloods.jpg"
-                class="card-img-top custom-img"
-                alt="Back Bag Bloods"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Back Bag Bloods</h5>
-                <p class="card-text">
-                  Back Bag yang menghubungkan fungsi praktis dengan gaya streetwear modern.
-                </p>
-                <a href="BackBag.php" class="btn btn-primary">Lihat Selengkapnya</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- card 6 -->
-          <div class="col-md-4">
-            <div class="card crop-img shadow-sm">
-              <img
-                src="foto/sepatu ventela.jpeg"
-                class="card-img-top custom-img"
-                alt="Sepatu Ventela"
-              />
-              <div class="card-body">
-                <h5 class="card-title">Sepatu Ventela</h5>
-                <p class="card-text">
-                  Sepatu Ventela yaitu produk lokal Indonesia yang dikenal dengan kualitas premium dan desain yang timeless.
-                </p>
-                <a href="Sepatu.php" class="btn btn-primary">Lihat Selengkapnya</a>
-              </div>
-            </div>
-          </div>
+        <div class="row">
+  <?php
+  $result = $mysqli->query("SELECT * FROM products ORDER BY id DESC");
+  while ($row = $result->fetch_assoc()):
+  ?>
+    <div class="col-md-4 mb-4">
+      <div class="card crop-img shadow-sm h-100">
+        <img
+          src="http://localhost/E-commerce2/foto/<?= $row['image'] ?>"
+          class="card-img-top custom-img"
+          alt="<?= htmlspecialchars($row['name']) ?>"
+        />
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title"><?= $row['name'] ?></h5>
+          <p class="card-text"><?= $row['description'] ?></p>
+          <p class="text-muted fw-bold">Rp <?= number_format($row['price'], 0, ',', '.') ?></p>
+          <a href="detail.php?id=<?= $row['id'] ?>" class="btn btn-primary mt-auto">Beli Sekarang</a>
         </div>
+      </div>
+    </div>
+  <?php endwhile; ?>
+</div>
+
       </div>
     </div>
         

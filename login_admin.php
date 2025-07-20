@@ -1,5 +1,5 @@
 <?php
-session_start();
+session_start(); 
 require 'config.php';
 
 if (isset($_SESSION['username'])) {
@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 // var_dump($result->num_rows);
-// exit();
+// exit(
     if ($result->num_rows > 0) {
         $_SESSION['username'] = $username;
-        header("Location: dashboard.php");
+        header("Location: admin/dashboard.php");
     } else {
         $error = "Username atau password salah.";
     }
@@ -42,7 +42,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #6b73ff, #000dff);
+    background : url("foto/gambar\ depan\ toko\ .jpg") no-repeat center center ;
+    background-size: cover;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,7 +53,7 @@ body {
 }
 
 .login-container {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.8); /* Warna putih dengan transparansi 80% */
     padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -59,6 +61,7 @@ body {
     max-width: 400px;
     text-align: center;
 }
+
 
 h1 {
     margin-bottom: 20px;
@@ -91,7 +94,7 @@ input[type="password"] {
 button {
     width: 100%;
     padding: 10px 15px;
-    background-color: #6b73ff;
+    background-color: #555;
     color: #fff;
     font-size: 16px;
     border: none;
@@ -101,7 +104,7 @@ button {
 }
 
 button:hover {
-    background-color: #000dff;
+    background-color: #333;
 }
 
 .register-link {
@@ -123,25 +126,65 @@ button:hover {
 </head>
 <body>
 
-    <div class="login-container">
-        <h1>Login</h1>
-        <p>RJR CLOTH</p>
-        <?php if ($error): ?>
-            <p class="error"><?php echo $error; ?></p>
-            <?php endif; ?>
-        <form action="login.php" method="POST">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="get_username" placeholder="Enter your username" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="get_password" placeholder="Enter your password" required>
-            </div>
-            <button href="dashboard.php" type="submit">Login</button>
-            <p class="register-link">Don't have an account? <a href="dashboard.php">Register</a></p>
-        </form>
-    </div>
+<!-- style jarak button lgin & back -->
+<style>
+.login-button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-button {
+    margin-top: 15px; /* jarak antara login dan back */
+    padding: 8px 16px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.login-button:hover {
+    background-color: #0056b3;
+}
+
+.back-button:hover {
+    background-color: #5a6268;
+}
+</style>
+
+
+   <div class="login-container">
+    <img src="foto/logo_RJR-.png" width="100" height="100">
+    <h1>RJR CLOTH</h1>
+    <p>Silahkan Login</p>
+
+    <?php if ($error): ?>
+        <p class="error"><?php echo $error; ?></p>
+    <?php endif; ?>
+
+    <form action="login_admin.php" method="POST">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="get_username" placeholder=" Username" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="get_password" placeholder="Password" required>
+        </div>
+        
+        <button type="submit" class="login-button">Login</button>
+    </form>
+
+    <!-- Tombol Back -->
+    <button type="button" class="back-button" onclick="window.location.href='home.php'">Back to Home</button>
+</div>
+
+
 </body>
 </html>
 
