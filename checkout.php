@@ -4,7 +4,6 @@ include 'config.php';
 
 // CEK apakah user SUDAH LOGIN
 if (!isset($_SESSION['user_id'])) {
-    // Redirect ke login user + kasih info kembali ke checkout
     header("Location: login_user.php?redirect=checkout");
     exit;
 }
@@ -14,6 +13,7 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
     echo "<script>alert('Keranjang belanja kosong'); window.location='produk.php';</script>";
     exit;
 }
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['buyer_name']) && isset($_POST['buyer_address'])) {
         $buyer_name = mysqli_real_escape_string($mysqli, $_POST['buyer_name']);
@@ -26,30 +26,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $total += $item['price'] * $item['quantity'];
         }
 
+        // Simpan ke tabel orders
         $insert = mysqli_query($mysqli, "INSERT INTO orders (user_id, buyer_name, buyer_address, order_date) VALUES (
-    '$user_id',
-    '$buyer_name',
-    '$buyer_address',
-    '$order_date'
-)");
-
+            '$user_id',
+            '$buyer_name',
+            '$buyer_address',
+            '$order_date'
+        )");
 
         if ($insert) {
             $order_id = mysqli_insert_id($mysqli);
 
-           foreach ($_SESSION['cart'] as $item) {
-    $product_id = $item['id']; // ambil id produk dari session cart
-    $price = $item['price'];
-    $qty = $item['quantity'];
+            foreach ($_SESSION['cart'] as $item) {
+                $product_id = $item['id'];
+                $price = $item['price'];
+                $qty = $item['quantity'];
 
-    mysqli_query($mysqli, "INSERT INTO order_items (order_id, product_id, price, quantity) VALUES (
-        '$order_id', '$product_id', '$price', '$qty'
-    )");
-}
+                // Simpan item pesanan
+                mysqli_query($mysqli, "INSERT INTO order_items (order_id, product_id, price, quantity) VALUES (
+                    '$order_id', '$product_id', '$price', '$qty'
+                )");
 
+                // Kurangi stok barang
+                $mysqli->query("
+                    UPDATE products 
+                    SET stock = stock - $qty 
+                    WHERE id = $product_id AND stock >= $qty
+                ");
+            }
+
+            // Bersihkan keranjang dari session & database
             unset($_SESSION['cart']);
-            $user_id = $_SESSION['user_id'];
-$mysqli->query("DELETE FROM cart_items WHERE user_id = $user_id");
+            $mysqli->query("DELETE FROM cart_items WHERE user_id = $user_id");
 
             header("Location: invoice.php?id=$order_id");
             exit;
@@ -58,7 +66,6 @@ $mysqli->query("DELETE FROM cart_items WHERE user_id = $user_id");
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -74,11 +81,11 @@ $mysqli->query("DELETE FROM cart_items WHERE user_id = $user_id");
 
   <form method="POST">
     <div class="mb-3">
-      <label for="buyer_name" class="form-label">Nama Pembeli</label>
+      <label for="buyer_name" class="form-label">Nama Lengkap</label>
       <input type="text" class="form-control" id="buyer_name" name="buyer_name" required>
     </div>
     <div class="mb-3">
-      <label for="buyer_address" class="form-label">Alamat</label>
+      <label for="buyer_address" class="form-label">Alamat Lengkap</label>
       <textarea class="form-control" id="buyer_address" name="buyer_address" rows="3" required></textarea>
     </div>
 

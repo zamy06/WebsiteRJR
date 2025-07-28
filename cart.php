@@ -23,7 +23,7 @@ include 'config.php';
   <?php include 'navbar.php'; ?>
 
   <div class="container my-5">
-    <h2 class="mb-4">Keranjang Belanja Anda</h2>
+    <h2 class="mb-4">Keranjang Saya</h2>
 
     <?php if (!isset($_SESSION['cart']) || count($_SESSION['cart']) === 0): ?>
       <div class="alert alert-info">Keranjang masih kosong. <a href="produk.php">Belanja sekarang!</a></div>

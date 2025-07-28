@@ -106,11 +106,12 @@ nav .mt-4 {
         <a href="data_produk.php" class="nav-link text-white <?php echo basename($_SERVER['PHP_SELF']) == 'data_produk.php' ? 'active' : ''; ?>">Data Produk</a>
     </li>
     <li class="nav-item">
-        <a href="../riwayat.php" class="nav-link text-white <?php echo basename($_SERVER['PHP_SELF']) == '../riwayat.php' ? 'active' : ''; ?>">Riwayat</a>
+        <a href="riwayat_admin.php" class="nav-link text-white <?php echo basename($_SERVER['PHP_SELF']) == '../riwayat.php' ? 'active' : ''; ?>">Riwayat</a>
     </li>
     <li class="nav-item">
-        <a href="transaksi/pesanan.php" class="nav-link text-white <?php echo basename($_SERVER['PHP_SELF']) == 'settings.php' ? 'active' : ''; ?>">Transaksi/pesanan</a>
-    </li>
+    <a href="data_pengguna.php" class="nav-link text-white <?php echo basename($_SERVER['PHP_SELF']) == 'data_pengguna.php' ? 'active' : ''; ?>">Data Pengguna</a>
+</li>
+
     
     <li class="nav-item">
         <a href="report.php" class="nav-link text-white <?php echo basename($_SERVER['PHP_SELF']) == 'report.php' ? 'active' : ''; ?>">Report E-Commerce</a>

@@ -9,6 +9,7 @@ if (isset($_POST['save'])) {
     $name = $mysqli->real_escape_string(trim($_POST['name']));
     $price = (int) $_POST['price'];
     $description = $mysqli->real_escape_string(trim($_POST['description']));
+    $stock = (int) $_POST['stock'];
 
     // Proses upload gambar jika ada file baru
     $image = "";
@@ -33,7 +34,8 @@ if (isset($_POST['save'])) {
 
     if ($id) {
         // Edit produk
-        $sql = "UPDATE products SET name='$name', price=$price, description='$description'";
+       $sql = "UPDATE products SET name='$name', price=$price, description='$description', stock=$stock";
+
 
         if ($image != "") {
             // Update gambar jika ada upload baru
@@ -50,16 +52,19 @@ if (isset($_POST['save'])) {
         // Jika gambar tidak diupload, simpan null atau kosong sesuai kebutuhan
         $imgValue = ($image != "") ? "'$image'" : "NULL";
 
-        $sql = "INSERT INTO products (name, price, description, image) VALUES ('$name', $price, '$description', $imgValue)";
+        $sql = "INSERT INTO products (name, price, description, image, stock) 
+        VALUES ('$name', $price, '$description', $imgValue, $stock)";
+
 
         if (!$mysqli->query($sql)) {
             die("Error tambah produk: " . $mysqli->error);
         }
     }
+session_start();
+$_SESSION['success'] = $id ? "Produk berhasil diperbarui." : "Produk berhasil ditambahkan.";
+header("Location: data_produk.php");
+exit;
 
-    // Redirect ke halaman admin setelah sukses
-    header("Location: produk.php");
-    exit;
 }
 
 // Proses hapus produk
@@ -79,7 +84,7 @@ if (isset($_POST['delete'])) {
     }
 
     $mysqli->query("DELETE FROM products WHERE id=$id");
-    header("Location: produk.php");
+    header("Location: ../produk.php");
     exit;
 }
 ?>

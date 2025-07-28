@@ -27,6 +27,7 @@ $product = $result->fetch_assoc();
 </head>
 <body class="bg-light">
 <div class="container py-5">
+    
     <div class="row">
         <div class="col-md-5">
             <img src="foto/<?= $product['image'] ?>" class="img-fluid rounded shadow" alt="<?= htmlspecialchars($product['name']) ?>">
@@ -35,13 +36,23 @@ $product = $result->fetch_assoc();
             <h2><?= $product['name'] ?></h2>
             <p><?= $product['description'] ?></p>
             <h4 class="text-primary">Rp <?= number_format($product['price'], 0, ',', '.') ?></h4>
+            <p class="text-muted">Sisa stok: <?= $product['stock'] ?></p>
+<?php if ($product['stock'] > 0): ?>
+  <form action="add_to_cart.php" method="POST" class="mt-4">
+      <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+      <label for="qty" class="form-label">Jumlah</label>
+      <input type="number" id="qty" name="quantity" value="1" min="1" max="<?= $product['stock'] ?>" class="form-control mb-3" style="width: 100px;" required>
+      <button type="submit" class="btn btn-success">+ Tambah ke Keranjang</button>
+  </form>
+<?php else: ?>
+  <div class="alert alert-danger mt-4">Stok kosong. Silakan cek produk lain.</div>
+<?php endif; ?>
 
-            <form action="add_to_cart.php" method="POST" class="mt-4">
-                <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                <label for="qty" class="form-label">Jumlah</label>
-                <input type="number" id="qty" name="quantity" value="1" min="1" class="form-control mb-3" style="width: 100px;">
-                <button type="submit" class="btn btn-success">+ Tambah ke Keranjang</button>
-            </form>
+<!-- Tombol Kembali -->
+<div class="mt-3">
+    <a href="produk.php" class="btn btn-secondary">← Kembali ke Produk</a>
+</div>
+
         </div>
     </div>
 </div>

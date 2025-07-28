@@ -6,7 +6,7 @@ include 'config.php';
 $product_id = isset($_POST['product_id']) ? intval($_POST['product_id']) : 0;
 $quantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : 1;
 
-// Validasi
+// Validasi awal
 if ($product_id < 1 || $quantity < 1) {
     header("Location: produk.php");
     exit;
@@ -18,8 +18,25 @@ if ($result->num_rows === 0) {
     header("Location: produk.php");
     exit;
 }
-
 $product = $result->fetch_assoc();
+
+// Hitung jumlah yang sudah ada di session cart
+$existingQty = 0;
+if (isset($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $cartItem) {
+        if ($cartItem['id'] == $product_id) {
+            $existingQty = $cartItem['quantity'];
+            break;
+        }
+    }
+}
+
+// Cek apakah total quantity melebihi stok
+$totalRequested = $existingQty + $quantity;
+if ($totalRequested > $product['stock']) {
+    header("Location: detail.php?id=$product_id&error=stok_kurang&tersedia={$product['stock']}");
+    exit;
+}
 
 // Buat array item keranjang
 $item = [
@@ -50,11 +67,9 @@ if (!$found) {
     $_SESSION['cart'][] = $item;
 }
 
-// ✅ Simpan juga ke database jika user sudah login
+// Simpan ke database jika login
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
-
-    // Cek apakah produk sudah ada
     $cek = $mysqli->query("SELECT * FROM cart_items WHERE user_id = $user_id AND product_id = $product_id");
     if ($cek->num_rows > 0) {
         $mysqli->query("UPDATE cart_items SET quantity = quantity + $quantity WHERE user_id = $user_id AND product_id = $product_id");
