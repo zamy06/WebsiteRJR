@@ -11,19 +11,23 @@ if (isset($_POST['save'])) {
     $price = $_POST['price'];
     $description = $_POST['description'];
     $image = $_FILES['image']['name'];
+$category = $_POST['category'];
 
     if ($image != "") {
         move_uploaded_file($_FILES['image']['tmp_name'], "../foto/" . $image);
     }
 
     if ($id) { // Update produk
-        $sql = "UPDATE products SET name='$name', price='$price', description='$description'";
+        $sql = "UPDATE products SET name='$name', category='$category', price='$price', description='$description'";
+
         if ($image != "") {
             $sql .= ", image='$image'";
         }
         $sql .= " WHERE id=$id";
     } else { // Insert produk baru
-        $sql = "INSERT INTO products (name, price, description, image) VALUES ('$name', '$price', '$description', '$image')";
+        $sql = "INSERT INTO products (name, category, price, description, image) 
+        VALUES ('$name', '$category', '$price', '$description', '$image')";
+
     }
 
     $mysqli->query($sql);
@@ -76,9 +80,21 @@ if (isset($_POST['delete'])) {
                 <div class="col-md-6">
                     <input type="text" name="name" id="name" class="form-control" placeholder="Nama Produk" required>
                 </div>
+               
+
                 <!-- Tambahkan input stok -->
 <div class="col-md-3">
   <input type="number" name="stock" id="stock" class="form-control" placeholder="Stok" required>
+</div>
+<div class="mb-3">
+  <label for="modal-category" class="form-label">Kategori</label>
+  <select name="category" id="modal-category" class="form-select" required>
+    <option value="">-- Pilih Kategori --</option>
+    <option value="Jaket">Jaket</option>
+    <option value="Kaos">Kaos</option>
+    <option value="Hoodie">Hoodie</option>
+    <option value="Sweater">Sweater</option>
+  </select>
 </div>
 
                 <div class="col-md-3">
@@ -105,6 +121,7 @@ if (isset($_POST['delete'])) {
                 <tr>
                     <th>ID</th>
                     <th>Nama</th>
+                    <th>Categori</th>
                     <th>Harga</th>
                     <th>Deskripsi</th>
                     <th>Stok</th>
@@ -116,35 +133,38 @@ if (isset($_POST['delete'])) {
     <?php
     $no = 1; // inisialisasi nomor urut mulai dari 1
     $limitOptions = [5, 10, 15, 20];
-$limit = isset($_GET['limit']) ? (int) $_GET['limit'] : 5;
-$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-$start = ($page - 1) * $limit;
+    $limit = isset($_GET['limit']) ? (int) $_GET['limit'] : 5;
+    $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+    $start = ($page - 1) * $limit;
 
-// Total produk
-$total_result = $mysqli->query("SELECT COUNT(*) AS total FROM products");
-$total_row = $total_result->fetch_assoc();
-$total_products = $total_row['total'];
-$total_pages = ceil($total_products / $limit);
+    // Total produk
+    $total_result = $mysqli->query("SELECT COUNT(*) AS total FROM products");
+    $total_row = $total_result->fetch_assoc();
+    $total_products = $total_row['total'];
+    $total_pages = ceil($total_products / $limit);
 
-// Ambil data produk
-$result = $mysqli->query("SELECT * FROM products LIMIT $start, $limit");
+    // Ambil data produk
+    $result = $mysqli->query("SELECT * FROM products LIMIT $start, $limit");
     while ($row = $result->fetch_assoc()):
     ?>
     <tr>
         <td><?= $no++ ?></td> <!-- nomor urut otomatis naik -->
         <td><?= $row['name'] ?></td>
+          <td><?= $row['category'] ?></td>
         <td>Rp <?= number_format($row['price'], 0, ',', '.') ?></td>
         <td><?= $row['description'] ?></td>
         <td><?= $row['stock'] ?></td>
         <td><img src="../foto/<?= $row['image'] ?>" width="100" class="img-thumbnail"></td>
         <td>
-            <button class="btn btn-warning btn-sm mb-1"
-                onclick="openModal(
+           <button class="btn btn-warning btn-sm mb-1"
+    oncl<button class="btn btn-warning btn-sm mb-1"
+    onclick="openModal(
   '<?= $row['id'] ?>',
   `<?= addslashes($row['name']) ?>`,
   <?= $row['price'] ?>,
   `<?= addslashes($row['description']) ?>`,
-  <?= $row['stock'] ?>
+  <?= $row['stock'] ?>,
+  `<?= $row['category'] ?>`
 )">Edit</button>
 
             <form method="POST" action="proses_produk.php" style="display:inline;">
@@ -216,6 +236,7 @@ $result = $mysqli->query("SELECT * FROM products LIMIT $start, $limit");
             <label for="modal-name" class="form-label">Nama Produk</label>
             <input type="text" name="name" id="modal-name" class="form-control" required>
         </div>
+        
         <div class="mb-3">
             <label for="modal-price" class="form-label">Harga</label>
             <input type="number" name="price" id="modal-price" class="form-control" required>
@@ -277,22 +298,21 @@ $result = $mysqli->query("SELECT * FROM products LIMIT $start, $limit");
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-function openModal(id = '', name = '', price = '', description = '') {
+function openModal(id = '', name = '', price = '', description = '', stock = '', category = '') {
     document.getElementById('modal-id').value = id;
     document.getElementById('modal-name').value = name;
     document.getElementById('modal-price').value = price;
     document.getElementById('modal-description').value = description;
     document.getElementById('modal-stock').value = stock;
-    
-    document.getElementById('modal-image').value = ''; // Kosongkan file input
+    document.getElementById('modal-category').value = category;
+    document.getElementById('modal-image').value = '';
 
-    // Ganti judul modal sesuai mode
     document.getElementById('productModalLabel').textContent = id ? 'Edit Produk' : 'Tambah Produk';
 
-    // Tampilkan modal
     var modal = new bootstrap.Modal(document.getElementById('productModal'));
     modal.show();
 }
+
 
 function confirmDelete(id) {
     document.getElementById('delete-id').value = id;

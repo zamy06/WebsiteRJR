@@ -38,11 +38,32 @@ include 'config.php';
         <p>
           PAKAIAN RESMI RJR CLOTH DAN PRINTING MARKER
         </p>
+<form method="GET" class="mb-4">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <select name="kategori" class="form-select" onchange="this.form.submit()">
+        <option value="">-- Semua Kategori --</option>
+        <option value="Jaket" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Jaket') ? 'selected' : '' ?>>Jaket</option>
+        <option value="Kaos" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Kaos') ? 'selected' : '' ?>>Kaos</option>
+        <option value="Hoodie" <?= (isset($_GET['kategori']) && $_GET['kategori'] == 'Hoodie') ? 'selected' : '' ?>>Hoodie</option>
+      </select>
+    </div>
+  </div>
+</form>
 
         <!-- card 1 -->
         <div class="row">
   <?php
+  $kategori = isset($_GET['kategori']) ? $_GET['kategori'] : '';
+if ($kategori != '') {
+  $stmt = $mysqli->prepare("SELECT * FROM products WHERE category = ? ORDER BY id DESC");
+  $stmt->bind_param("s", $kategori);
+  $stmt->execute();
+  $result = $stmt->get_result();
+} else {
   $result = $mysqli->query("SELECT * FROM products ORDER BY id DESC");
+}
+
   while ($row = $result->fetch_assoc()):
   ?>
     <div class="col-md-4 mb-4">

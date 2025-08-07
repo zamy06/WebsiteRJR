@@ -24,11 +24,13 @@
    <?php include 'navbar.php'; ?>
 
     <!-- banner -->
-    <section class="banner-tentang">
-      <div class="tittle container">
-      </div>
-    </section>
-    
+<section class="banner-tentang d-flex align-items-center justify-content-center text-center" style="position: relative; min-height: 300px;">
+  <div class="tittle container text-white">
+    <h1 class="display-4 fw-bold">Tentang RJR Clothing</h1>
+    <p class="lead">Kami menyediakan berbagai produk fashion berkualitas yang stylish dan nyaman digunakan.</p>
+  </div>
+</section>
+
     <!-- tentang -->
     <div class="container-fluid pt-0 pb-5">
       <div class="container">

@@ -50,17 +50,17 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <!-- CEK LOGIN -->
         <?php if (isset($_SESSION['user_id'])): ?>
-  <!-- USER LOGGED IN -->
-  <li class="nav-item">
-    <a class="nav-link" href="user_home.php">
-      <i class="fas fa-user-circle me-1"></i> Akun Saya (<?= htmlspecialchars($_SESSION['user_nama']) ?>)
-    </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="logout_user.php">
-      <i class="fas fa-sign-out-alt me-1"></i> Logout
-    </a>
-  </li>
+        <!-- USER LOGGED IN -->
+        <li class="nav-item">
+          <a class="nav-link" href="user_home.php">
+            <i class="fas fa-user-circle me-1"></i> Akun Saya (<?= htmlspecialchars($_SESSION['user_nama']) ?>)
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logout_user.php">
+            <i class="fas fa-sign-out-alt me-1"></i> Logout
+          </a>
+        </li>
         <?php else: ?>
           <!-- DROPDOWN LOGIN -->
           <li class="nav-item dropdown">
